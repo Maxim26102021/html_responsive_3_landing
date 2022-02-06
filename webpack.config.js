@@ -3,31 +3,36 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: './index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        assetModuleFilename: "assets/[hash][ext][query]",
+        clean: true,
     },
     module: {
         rules: [
+            {
+                test: /\.html$/i,
+                loader: "html-loader"
+            },
             {
                 test: /\.s[ac]ss$/i,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
-                type: 'asset/resource',
+                type: 'asset/resource'
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './public/index.html'
+            template: './src/index.html'
 
         })
     ],

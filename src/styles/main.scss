@@ -1,3 +1,8 @@
-h1 {
-    color: red;
+@import 'fontPop';
+@import 'global';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
